@@ -3,10 +3,10 @@
 
 # Install R; Debian stretch has latest version
 sudo apt-get update
-sudo apt-get install -y r-base r-base-dev
+# sudo apt-get install -y r-base r-base-dev
 
 # Set RStudio version
-VERS=v0.99.473
+VERS=v0.99.1257
 
 # Download RStudio source
 cd ~/Downloads/
