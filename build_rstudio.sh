@@ -3,7 +3,7 @@
 
 # Install R; Debian stretch has latest version
 sudo apt-get update
-sudo apt-get install -y r-base r-base-dev
+sudo apt-get install -y wget r-base r-base-dev
 
 # Set RStudio version
 VERS=v0.99.903
@@ -15,8 +15,15 @@ mkdir ~/Downloads/rstudio-$VERS
 tar xvf ~/Downloads/$VERS -C ~/Downloads/rstudio-$VERS --strip-components 1
 rm ~/Downloads/$VERS
 
+# Oracle Java is much faster in compiling than OpenJDK
+wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u101-b13/jdk-8u101-linux-arm32-vfp-hflt.tar.gz
+tar -xf jdk-8u101-linux-arm32-vfp-hflt.tar.gz
+sudo mkdir -p /usr/lib/jvm
+sudo mv jdk1.8.101 /usr/lib/jvm
+sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.8.101/bin/javac 1
+sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.8.101/bin/java 1
+
 # Run environment preparation scripts
-sudo apt-get install -y openjdk-7-jdk
 cd ~/Downloads/rstudio-$VERS/dependencies/linux/
 ./install-dependencies-debian --exclude-qt-sdk
 
