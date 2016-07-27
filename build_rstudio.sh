@@ -19,9 +19,9 @@ rm ~/Downloads/$VERS
 wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u101-b13/jdk-8u101-linux-arm32-vfp-hflt.tar.gz
 tar -xf jdk-8u101-linux-arm32-vfp-hflt.tar.gz
 sudo mkdir -p /usr/lib/jvm
-sudo mv jdk1.8.101 /usr/lib/jvm
-sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.8.101/bin/javac 1
-sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.8.101/bin/java 1
+sudo mv jdk1.8.0_101 /usr/lib/jvm
+sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.8.0_101/bin/javac 1
+sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.8.0_101/bin/java 1
 
 # Run environment preparation scripts
 cd ~/Downloads/rstudio-$VERS/dependencies/linux/
@@ -75,9 +75,9 @@ export LANGUAGE=en_US.UTF-8
 #echo 'export LANGUAGE=en_US.UTF-8' >> ~/.bashrc
 
 # Clean the system of packages used for building
-sudo apt-get autoremove -y cabal-install ghc openjdk-7-jdk pandoc libboost-all-dev
-sudo rm -r -f ~/rstudio-$VERS
-sudo apt-get autoremove -y
+# sudo apt-get autoremove -y cabal-install ghc openjdk-7-jdk pandoc libboost-all-dev
+# sudo rm -r -f ~/rstudio-$VERS
+# sudo apt-get autoremove -y
 
 # Start the server
 sudo rstudio-server start
