@@ -22,6 +22,8 @@ sudo mkdir -p /usr/lib/jvm
 sudo mv jdk1.8.0_101 /usr/lib/jvm
 sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.8.0_101/bin/javac 1
 sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.8.0_101/bin/java 1
+sudo update-alternatives --set javac /usr/lib/jvm/jdk1.8.0_101/bin/javac
+sudo update-alternatives --set java /usr/lib/jvm/jdk1.8.0_101/bin/java
 
 # Run environment preparation scripts
 cd ~/Downloads/rstudio-$VERS/dependencies/linux/
@@ -61,8 +63,9 @@ sudo make install
 
 # Additional install steps
 sudo useradd -r rstudio-server
-sudo cp /usr/local/lib/rstudio-server/extras/init.d/debian/rstudio-server /etc/init.d/rstudio-server
-sudo chmod +x /etc/init.d/rstudio-server 
+# sudo cp /usr/local/lib/rstudio-server/extras/init.d/debian/rstudio-server /etc/init.d/rstudio-server
+# sudo chmod +x /etc/init.d/rstudio-server 
+sudo cp /usr/local/lib/rstudio-server/extras/systemd/rstudio-server.service /etc/systemd/system/
 sudo ln -f -s /usr/local/lib/rstudio-server/bin/rstudio-server /usr/sbin/rstudio-server
 sudo chmod 777 -R /usr/local/lib/R/site-library/
 
